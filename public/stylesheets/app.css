@@ -1,0 +1,11 @@
+.max-diamension {
+  max-width:  250px;
+  max-width: 250px;
+
+}
+
+.btn-text-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
