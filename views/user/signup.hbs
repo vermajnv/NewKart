@@ -1,4 +1,11 @@
 <h1 class="text-center">Sign Up</h1>
+{{#if hasError}}
+    <div class="alert alert-danger">
+        {{#each messages}}
+            <h5>{{this}}</h5>
+        {{/each}}
+    </div>
+{{/if}}
 <div class="row">
    <form style="width : 100% " action="/user/signup" method="post">
       <div class="form-group">
