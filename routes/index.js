@@ -26,6 +26,24 @@ router.get('/user/signup', function(req, res, next) {
     });
 });
 
+// Sign In User
+
+router.get('/user/signin', function(req, res, next) {
+    let messages = req.flash('error');
+    res.render('user/signin', {
+        csrfToken: req.csrfToken(),
+        messages : messages,
+        hasError : messages.length
+    });
+});
+
+// Post Sign inspect
+router.post('/user/signin', passport.authenticate('local.signin', {
+    successRedirect: '/user/profile',
+    failureRedirect: '/user/signin',
+    failureFlash: true
+}))
+
 // Store user
 router.post('/user/signup', passport.authenticate('local.signup', {
     successRedirect: '/user/profile',
