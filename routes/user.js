@@ -10,6 +10,12 @@ router.use(csrfProtection);
 router.get('/profile', isLoggedIn, function(req, res, next) {
     res.render('user/profile');
 });
+// Log out routes
+
+router.get('/logout', isLoggedIn, function(req, res, next) {
+    req.logout();
+    res.redirect('/');
+});
 
 router.use('/', notLoggedIn, function(req, res, next) {
     return next();
@@ -50,12 +56,7 @@ router.post('/signin', passport.authenticate('local.signin', {
     failureFlash: true
 }))
 
-// Log out routes
 
-router.get('/logout', function(req, res, next) {
-    req.logout();
-    res.redirect('/');
-});
 module.exports = router;
 
 function isLoggedIn(req, res, next) {
